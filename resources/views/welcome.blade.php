@@ -91,6 +91,11 @@
                     composer dump-autoload<br>
                     php artisan migrate<br><br>
 
+                    <b>Database Details</b><br>
+                    DB_DATABASE=exam<br>
+                    DB_USERNAME=root<br>
+                    DB_PASSWORD=<br><br>
+
                     <b>To run the CRON or SCHEDULER, run this command</b><br>
                     php artisan schedule:run <br><br>
 
