@@ -87,29 +87,29 @@
                 <span>
                     <b>Please do this command:</b> <br>
                     
-                    composer install<br>
-                    composer dump-autoload<br>
-                    php artisan migrate<br><br>
+                    <div style="color:red;">
+                        composer install<br>
+                        composer dump-autoload<br>
+                        php artisan migrate<br><br>
+                    </div> 
 
                     <b>Database Details</b><br>
-                    DB_DATABASE=exam<br>
-                    DB_USERNAME=root<br>
-                    DB_PASSWORD=<br><br>
+                    <div style="color:red;">
+                        DB_DATABASE=exam<br>
+                        DB_USERNAME=root<br>
+                        DB_PASSWORD=<br><br>
+                    </div>
 
                     <b>To run the CRON or SCHEDULER, run this command</b><br>
-                    php artisan schedule:run <br><br>
+                    <div style="color:red;">
+                        php artisan import:players <br><br>
+                    </div>
 
                     <b>To run PHPUnit Testing, run this command</b><br>
-                    ./vendor/bin/phpunit
+                    <div style="color:red;">
+                        ./vendor/bin/phpunit
+                    </div>
                 </span><br><br>
-
-                <b>Sample call to action URL</b>
-                <div class="links">
-                    <a href="{{ url('api/import') }}">{{ url('api/import') }}</a>
-                    <a href="{{ url('api/all-players') }}">{{ url('api/all-players') }}</a>
-                    <a href="{{ url('api/single-player/1') }}">{{ url('api/single-player/1') }}</a>
-                </div>
-
                 
             </div>
         </div>

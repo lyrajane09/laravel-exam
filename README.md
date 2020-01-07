@@ -9,7 +9,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 
 ## To run the CRON or SCHEDULER, run this command
-php artisan schedule:run
+php artisan import:players
 
 ## To run PHPUnit Testing, run this command
 ./vendor/bin/phpunit

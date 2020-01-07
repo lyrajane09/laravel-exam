@@ -2,45 +2,37 @@
 
 namespace App\Services;
 
-use App\Repositories\PlayersRepository;
+use App\Player;
 use Illuminate\Http\Response;
 
-class ImportService{
-
-    public $playerRepo;
-
-    /**
-     * @description constructor
-     */
-    public function __construct(PlayersRepository $playerRepo){
-        $this->playerRepo = $playerRepo;
-    }
+class ImportService
+{
 
     /**
      * @description import player
      */
-    public function importPlayer(){
+    public function importPlayer($resource_url = 'https://fantasy.premierleague.com/api/bootstrap-static/'){
 
         $total = 0;
         $result = [];
 
-        $jsonResponse = file_get_contents('https://fantasy.premierleague.com/api/bootstrap-static/');
-        $result = json_decode($jsonResponse, true);
+        try {
+            $jsonResponse = file_get_contents($resource_url);
+            $result = json_decode($jsonResponse, true);
 
-        $status = Response::HTTP_BAD_REQUEST;
-        $message = 'Bad Request';
-
-        if (json_last_error() === JSON_ERROR_NONE) {
             $total = count($result['elements']);
             foreach($result['elements'] as $element){
                 $element['news_added'] = date('Y-m-d H:i:s', strtotime($element['news_added']));
-                $this->playerRepo->create($element);
+                Player::create($element);
             }
 
             $status = Response::HTTP_OK;
             $message = 'Successfully Imported';
+        } catch(\Exception $e) {
+            $status = Response::HTTP_BAD_REQUEST;
+            $message = 'Bad Request';
         }
-
+        
         return compact('status', 'message', 'total');
     }
 

@@ -15,8 +15,8 @@ class CreatePlayersTable extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('chance_of_playing_next_round')->default(0);
-            $table->integer('chance_of_playing_this_round')->default(0);
+            $table->integer('chance_of_playing_next_round')->nullable();
+            $table->integer('chance_of_playing_this_round')->nullable();
             $table->bigInteger('code');
             $table->integer('cost_change_event');
             $table->integer('cost_change_event_fall');
@@ -24,8 +24,8 @@ class CreatePlayersTable extends Migration
             $table->integer('cost_change_start_fall');
             $table->integer('dreamteam_count');
             $table->integer('element_type');
-            $table->decimal('ep_next', 8, 1)->default(0.0);
-            $table->decimal('ep_this', 8, 1)->default(0.0);
+            $table->decimal('ep_next', 8, 1)->nullable();
+            $table->decimal('ep_this', 8, 1)->nullable();
             $table->integer('event_points');
             $table->decimal('form', 8, 1)->default(0.0);
             $table->boolean('in_dreamteam');
