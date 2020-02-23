@@ -1,11 +1,11 @@
 <?php
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Players extends Model{
-
-    protected $table = 'players';
+class Player extends Model
+{
 
     protected $fillable = [
         'chance_of_playing_next_round',
@@ -57,39 +57,11 @@ class Players extends Model{
         'influence',
         'creativity',
         'threat',
-        'ict_index'
+        'ict_index',
     ];
 
-    /**
-     * @description [set chance_of_playing_this_round attribute]
-     */
-    public function setChanceOfPlayingNextRoundAttribute($value)
+    public function getFullNameAttribute()
     {
-        $this->attributes['chance_of_playing_next_round'] = ($value == 0) ? 0 : $value;
+        return $this->first_name . ' ' . $this->second_name;
     }
-
-    /**
-     * @description [set chance_of_playing_this_round attribute]
-     */
-    public function setChanceOfPlayingThisRoundAttribute($value)
-    {
-        $this->attributes['chance_of_playing_this_round'] = ($value == 0) ? 0 : $value;
-    }
-
-    /**
-     * @description [set ep_next attribute]
-     */
-    public function setEpNextAttribute($value){
-        $this->attributes['ep_next'] = ($value == 0) ? 0 : $value;
-    }
-
-    /**
-     * @description [set ep_this attribute]
-     */
-    public function setEpThisAttribute($value){
-        $this->attributes['ep_this'] = ($value == 0) ? 0 : $value;
-    }
-
-   
-
 }

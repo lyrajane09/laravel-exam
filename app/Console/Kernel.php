@@ -4,7 +4,6 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\Services\ImportService as ImportService;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\ImportPlayers::class
     ];
 
     /**
@@ -25,21 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-       #########import cron
-       $schedule->call(function(){
-
-            echo '=======import players started=======';
-            echo "\n";
-
-            $impServ = new ImportService(new \App\Repositories\PlayersRepository);
-            $impServ = $impServ->importPlayer();
-
-            echo "total players imported: ".$impServ['total']."\n";
-            echo "status: ".$impServ['status']."\n";
-            echo "message: ".$impServ['message']."\n";
-            echo "=======import players ended==========";
-
-       })->everyMinute();
+       #########run the cron jobs every minute
+       $schedule->command('import:players')
+                ->everyMinute();
     }
 
     /**
