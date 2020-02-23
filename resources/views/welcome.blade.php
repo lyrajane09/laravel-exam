@@ -107,9 +107,7 @@
                 <div class="links">
                     <a href="{{ url('api/all-players') }}">{{ url('api/all-players') }}</a>
                     <a href="{{ url('api/single-player/1') }}">{{ url('api/single-player/1') }}</a>
-                </div>
-
-                
+                </div>                
             </div>
         </div>
     </body>
