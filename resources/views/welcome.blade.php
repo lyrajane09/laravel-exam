@@ -105,7 +105,6 @@
 
                 <b>Sample call to action URL</b>
                 <div class="links">
-                    <a href="{{ url('api/import') }}">{{ url('api/import') }}</a>
                     <a href="{{ url('api/all-players') }}">{{ url('api/all-players') }}</a>
                     <a href="{{ url('api/single-player/1') }}">{{ url('api/single-player/1') }}</a>
                 </div>
